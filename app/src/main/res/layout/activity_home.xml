@@ -186,7 +186,7 @@
         android:layout_height="0dp"
         android:layout_margin="10dp"
         android:background="@drawable/blue_background"
-        android:text="@string/get_personalized_advice"
+        android:text="@string/Logout"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@id/guideline3"
         app:layout_constraintEnd_toEndOf="@id/guidelineMrgEnd"

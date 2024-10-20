@@ -126,4 +126,5 @@
     <string name="meeting_t">Meeting(online/offline)</string>
     <string name="patient_name">Patient Name</string>
     <string name="schedule_meetingw">Schedule Meeting</string>
+    <string name="Logout">Logout</string>
 </resources>

@@ -3,6 +3,7 @@ package daniel.brian.originhack.activities
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import daniel.brian.originhack.databinding.ActivityHomeBinding
 
 
@@ -21,7 +22,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.advice.setOnClickListener {
-            val intent = Intent(this, AdviceActivity::class.java)
+            val intent = Intent(this,AdviceActivity::class.java)
             startActivity(intent)
         }
 
