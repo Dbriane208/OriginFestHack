@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <color name="g_white">#FFFEFF</color>
+    <color name="g_blue">#1A2D5D</color>
+    <color name="g_black">#5B5B5D</color>
+    <color name="g_orange">#F37B55</color>
+    <color name="blue">#1877F2</color>
+    <color name="black">#191819</color>
+
+    <color name="dark_colorBackground">#1C1E21</color>
+    <color name="dark_colorPrimary">#1877F2</color>
+    <color name="dark_colorError">#3A3B3C</color>
+    <color name="dark_colorSurface">#3A3B3C</color>
+
+    <color name="light_colorBackground">#FFFEFF</color>
+    <color name="light_colorPrimary">#1877F2</color>
+    <color name="light_colorError">#FF84B7</color>
+    <color name="light_colorSurface">#FFFEFF</color>
+    <color name="light_colorSecondary">#625B71</color>
+    <color name="light_colorTertiary">#7D5260</color>
+
+    <color name="g_gray700">#666666</color>
+    <color name="g_dark_blue">#000759</color>
+    <color name="g_blue_gray200">#97AABD</color>
+    <color name="g_light_red">#FF9999</color>
+    <color name="g_card_background">#85C1E8</color>
+    <color name="g_search_and_icons">#FAFBFC</color>
+    <color name="g_line">#E9EAEC</color>
+    <color name="g_blue100">#B8D9FA</color>
+    <color name="g_red">#FF0000</color>
+    <color name="g_gray500">#969899</color>
+    <color name="g_orange_yellow">#F8BA00</color>
+    <color name="g_green">#BF24DD17</color>
+
 </resources>

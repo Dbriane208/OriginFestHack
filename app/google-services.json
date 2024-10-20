@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "721707031249",
+    "project_id": "originfest-4e1c7",
+    "storage_bucket": "originfest-4e1c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721707031249:android:05ca30abfc74d81e7443f0",
+        "android_client_info": {
+          "package_name": "daniel.brian.originhack"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAS50UMyfY1wcWaNybc2TnaFppeFtT23II"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
