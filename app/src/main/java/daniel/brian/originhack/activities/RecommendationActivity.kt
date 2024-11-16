@@ -1,6 +1,7 @@
 package daniel.brian.originhack.activities
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -18,7 +19,7 @@ class RecommendationActivity : AppCompatActivity() {
 
     private val generativeModel = GenerativeModel(
         modelName = "gemini-1.5-flash",
-        apiKey = "YOUR_API_KEY"
+        apiKey = ""
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,10 +66,14 @@ class RecommendationActivity : AppCompatActivity() {
         // Handle button click to get AI recommendation
         binding.btnRec.setOnClickListener {
             lifecycleScope.launch {
-                // Call the suspend function to get the AI response
-                val recommendation = generateStory(prompt)
-                // Set the AI response to a TextView or another UI component
-                binding.recommendationTextView.text = recommendation
+                try{
+                    // Call the suspend function to get the AI response
+                    val recommendation = generateStory(prompt)
+                    // Set the AI response to a TextView or another UI component
+                    binding.recommendationTextView.text = recommendation
+                } catch (e: Exception) {
+                    Toast.makeText(this@RecommendationActivity,"Issue with Model. Try Again later.",Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
