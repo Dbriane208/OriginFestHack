@@ -127,4 +127,7 @@
     <string name="patient_name">Patient Name</string>
     <string name="schedule_meetingw">Schedule Meeting</string>
     <string name="Logout">Logout</string>
+    <string name="get_recommendation">Get Recommendation</string>
+    <string name="recommendation_">Recommendation :</string>
+    <string name="ai_recommendation_will_appear_here">AI Recommendation will appear here</string>
 </resources>

@@ -49,7 +49,7 @@ class ScheduleActivity : AppCompatActivity() {
                         Toast.makeText(this@ScheduleActivity, "Loading...", Toast.LENGTH_SHORT).show()
                     }
                     is Resource.Success -> {
-                        Toast.makeText(this@ScheduleActivity, "Battery Appointment Booked Successfully", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@ScheduleActivity, "Appointment Booked Successfully", Toast.LENGTH_LONG).show()
                     }
                     else -> Unit
                 }

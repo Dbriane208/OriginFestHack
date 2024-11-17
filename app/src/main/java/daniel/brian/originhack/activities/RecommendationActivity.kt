@@ -2,13 +2,9 @@ package daniel.brian.originhack.activities
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.google.ai.client.generativeai.GenerativeModel
-import daniel.brian.originhack.R
 import daniel.brian.originhack.databinding.ActivityRecommendationBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,10 +12,10 @@ import kotlinx.coroutines.withContext
 
 class RecommendationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRecommendationBinding
-
+    private var isLoading = false
     private val generativeModel = GenerativeModel(
         modelName = "gemini-1.5-flash",
-        apiKey = ""
+        apiKey = "YOUR_API_KEY"
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +49,10 @@ class RecommendationActivity : AppCompatActivity() {
     2. OXYGEN LEVEL: For maintaining healthy oxygen levels, practice deep breathing exercises and stay physically active. Make sure you are not sitting for long periods and consider light cardio exercises such as brisk walking.
 
     3. PHYSICAL ACTIVITY: You’ve taken $steps steps today. Aim for more consistent activity if needed. Moderate exercises like walking, cycling, or swimming can be beneficial. Increase your steps gradually over time to support better health outcomes.
-
+    
+    Don't say something like Contnact you doctor in the recommendations. I want the recommendation to be positive eg You should try to drink more water to raise oxygen levels , try to take more steps
+    And then at the conclusion you can summarize and give the recommendions of the food to be in the diet and  then advice for regular checks up from medical doctors.
+   
     In terms of diet, I recommend the following foods:
     - Whole grains such as oats, brown rice, or whole wheat.
     - Leafy green vegetables like kale and spinach.
@@ -65,25 +64,47 @@ class RecommendationActivity : AppCompatActivity() {
 
         // Handle button click to get AI recommendation
         binding.btnRec.setOnClickListener {
-            lifecycleScope.launch {
-                try{
-                    // Call the suspend function to get the AI response
-                    val recommendation = generateStory(prompt)
-                    // Set the AI response to a TextView or another UI component
-                    binding.recommendationTextView.text = recommendation
-                } catch (e: Exception) {
-                    Toast.makeText(this@RecommendationActivity,"Issue with Model. Try Again later.",Toast.LENGTH_SHORT).show()
+            if (!isLoading) {
+                showLoadingState()
+                lifecycleScope.launch {
+                    try{
+                        val recommendation = generateStory(prompt)
+                        binding.recommendationTextView.text = recommendation
+                    } catch (e: Exception) {
+                        Toast.makeText(this@RecommendationActivity,"High traffic on the providers Model. Try Again later.",Toast.LENGTH_SHORT).show()
+                    } finally {
+                       hideLoadingState()
+                    }
                 }
             }
         }
     }
 
-    // Suspend function to call the AI model
+
     private suspend fun generateStory(prompt: String): String {
         return withContext(Dispatchers.IO) {
-            // Generate content using the AI model
             val response = generativeModel.generateContent(prompt)
-            response.text.toString() // Return the text of the response
+            response.text.toString()
+        }
+    }
+
+    private fun showLoadingState() {
+        isLoading = true
+        binding.apply {
+            btnRec.isEnabled = false
+            btnRec.alpha = 0.5f
+            Toast.makeText(this@RecommendationActivity,"Loading....",Toast.LENGTH_SHORT).show()
+            btnRec.text = "Generating..."
+            recommendationTextView.text = ""
+        }
+    }
+
+    private fun hideLoadingState() {
+        isLoading = false
+        binding.apply {
+            btnRec.isEnabled = true
+            btnRec.alpha = 1.0f
+            btnRec.text = "Get Recommendation"
         }
     }
 
